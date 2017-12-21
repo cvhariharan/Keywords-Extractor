@@ -1,6 +1,6 @@
 import re,operator
 
-class Extractor():
+class Extractor:
     def normalize(self,text):
         text = re.sub("[^A-Za-z0-9_]", " ", text)
         text = re.sub(" +"," ",text)
@@ -29,7 +29,6 @@ class Extractor():
         keywords = []
         sentences = []
         regexSeq = " |\\b".join(self.stopwordsList)
-
         regexSeq = "\\b"+regexSeq
         sentences = self.normalizedText.split(".")
         for sentence in sentences:
@@ -39,8 +38,6 @@ class Extractor():
         superList = []
         for l in keywords:
             superList = superList + l
-        #print(regexSeq)
-        print(superList)
         return superList
         #return stopwordsList
 
@@ -66,10 +63,3 @@ class Extractor():
         sortedMap = sorted(keyMap.items(), key=operator.itemgetter(1))
         sortedMap.reverse()
         return sortedMap
-
-
-text = "Samsung Electronics Co Ltd said on Wednesday it has developed the world's smallest DRAM chip, widening its technical lead on competitors as it tracks towards a record operating profit in 2017 driven by the semiconductor business.The 'second-generation' 10-nanometre class, 8-gigabit DRAM chips with improved energy efficiency and data processing performance would be geared toward premium data-crunching electronics such as cloud computing centres, mobile devices and high-speed graphic cards, Samsung said in a statement.The global leader in computer chips, televisions and smartphones said it would shift most of its existing DRAM production capacity to 10-nano chips in 2018.This \"aggressive\" production expansion would \"accommodate strong market demand,\" said Gyoyoung Jin, president of Memory Business at Samsung Electronics.With the appointment of a new generation of top managers in its three main businesses including semiconductors in late October, the South Korean company said it was not looking to expand chip shipments immediately but was investing to maintain longer-term market position."
-r = Extractor(text)
-print(r.rank_words())
-"""print(normalize(text))
-print(extract_words(text))"""
